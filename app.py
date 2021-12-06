@@ -35,22 +35,16 @@ def developer(id):
 
             # Let´s define the return´s message
             message = "There isn´t developer for the ID {}".format(id)
-            status = "success"
+            response = {"status":"error", "message":message}
 
         except Exception as e:
 
             # Let´s define the return´s message
             message = "{}".format(str(e))
-            status = "failure"
+            response = {"status":"error", "message":message}
 
-        finally:
-
-            # Let´s make the api response
-            reponse = {"return":status,
-                        "message":message}
-
-            # Function return
-            return jsonify(response)
+        # Function return
+        return jsonify(response)
 
     # The requets method is PUT (Update)
     elif request.method == "PUT":
